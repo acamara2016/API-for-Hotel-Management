@@ -26,15 +26,28 @@ app.use(function (req, res, next) {
     // Pass to next layer of middleware
     next();
 });
+ 
+var customer = require('./api/routes/customer.routes');
+var reservation = require('./api/routes/reservation.routes');
+var check = require('./api/routes/check.routes');
+var room_check = require('./api/routes/room_check.routes.js');
+var room = require('./api/routes/room.routes');
+var invoice = require('./api/routes/invoice.routes.js');
+var payment = require('./api/routes/payment.routes');
+var bill = require('./api/routes/bill.routes');
+var hotel = require('./api/routes/hotel.routes');
+var price = require('./api/routes/pricing.routes');
 
-// Import routes
-// const login = require('./api/routes/login')
-// const register = require('./api/routes/register')
-
-// // Use routes
-// app.use('/login', login)
-// app.use('/register', register)
-
+app.use('/customer', customer);
+app.use('/reservation', reservation);
+app.use('/check', check);
+app.use('/room_check', room_check);
+app.use('/room', room);
+app.use('/invoice', invoice);
+app.use('/payment', payment);
+app.use('/bill', bill);
+app.use('/hotel', hotel);
+app.use('/pricing', price)
 // Listen for the server at a port.
 app.listen(process.env.PORT || 8000, (err) => {
     console.log('Server running on ' + 8000)
